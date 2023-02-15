@@ -9,7 +9,7 @@ Widget::Widget(QWidget *parent)
     te1->setMinimumSize(410,530);
     te2 = new QTextEdit;
     te2->setMinimumSize(410,530);
-    le = new QLineEdit("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");
+    le = new QLineEdit("sk-YOUR API");
     pb = new QPushButton("Send");
 
     QHBoxLayout* hbox = new QHBoxLayout;
