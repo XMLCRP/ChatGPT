@@ -11,6 +11,7 @@ Widget::Widget(QWidget *parent)
     te2->setMinimumSize(410,530);
     le = new QLineEdit("sk-YOUR API");
     pb = new QPushButton("Send");
+    lb = new QLabel("API KEY:");
 
     QHBoxLayout* hbox = new QHBoxLayout;
     hbox->addWidget(te1);
@@ -21,13 +22,18 @@ Widget::Widget(QWidget *parent)
     hbox1->addWidget(pb);
     hbox1->addStretch();
 
+    QHBoxLayout* hbox2 = new QHBoxLayout;
+    hbox2->addWidget(lb);
+    hbox2->addWidget(le);
+
     QVBoxLayout* vbox = new QVBoxLayout;
     vbox->addLayout(hbox);
-    vbox->addWidget(le);
+    vbox->addLayout(hbox2);
     vbox->addLayout(hbox1);
 
     this->setLayout(vbox);
 
+    this->getapi(); //Get api from file：config.txt.
     nam = new QNetworkAccessManager;
     model = new OpenAIModel(nam, le->text());
 

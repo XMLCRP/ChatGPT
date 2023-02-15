@@ -4,9 +4,12 @@
 #include <QWidget>
 #include <QTextEdit>
 #include <QLineEdit>
+#include <QLabel>
 #include <QPushButton>
 #include <QLocale>
 #include <QTranslator>
+#include <QFileDialog>
+#include <QFile>
 
 #include "openaimodel.h"
 
@@ -14,6 +17,16 @@ class Widget : public QWidget
 {
     Q_OBJECT
 public slots:
+    void getapi()
+    {
+        QFile file("config.txt");
+        if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+                    return;
+
+        QByteArray line = file.readLine();
+        le->setText(line);
+    }
+
     void sendmsg()
     {
         model->apiKey = le->text();
@@ -48,8 +61,9 @@ public:
 private:
     QTextEdit* te1, *te2;
     QLineEdit* le;
+    QLabel* lb;
     QPushButton* pb;
-    QString* apikey;
+    QString* apikey;   
 
     QNetworkAccessManager* nam;
     OpenAIModel* model;
