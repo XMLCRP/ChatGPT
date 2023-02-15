@@ -32,9 +32,9 @@ public:
         nam->post(request, doc.toJson());
     }
 
+    QString apiKey;
 private:
     QNetworkAccessManager *nam;
-    QString apiKey;
     QObject *parent;
 
 private slots:

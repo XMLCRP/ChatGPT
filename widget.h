@@ -16,6 +16,7 @@ class Widget : public QWidget
 public slots:
     void sendmsg()
     {
+        model->apiKey = le->text();
         model->generateText(te1->toPlainText());
     }
 
